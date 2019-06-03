@@ -16,8 +16,7 @@ namespace AvalonDockTest
     protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
     {
       base.ConfigureRegionAdapterMappings(regionAdapterMappings);
-      regionAdapterMappings.RegisterMapping(typeof(DockingManager),
-        new DockingManagerRegionAdapter(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
+      regionAdapterMappings.RegisterMapping(typeof(DockingManager), Container.Resolve<DockingManagerRegionAdapter>());
     }
 
     protected override Window CreateShell()
@@ -27,7 +26,6 @@ namespace AvalonDockTest
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
-      //containerRegistry.GetContainer().RegisterType<ContentView>();
     }
   }
 }
